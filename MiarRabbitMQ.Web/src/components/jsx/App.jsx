@@ -6,7 +6,7 @@ function App() {
 
     return (
         <div className="miar-form">
-            <form method="GET" action="#">
+            <form method="GET" action="http://localhost:3000/register">
                 <table>
                     <thead>
                         <tr>

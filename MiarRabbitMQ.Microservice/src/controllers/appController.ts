@@ -20,21 +20,18 @@ class AppController {
             data
         });
     }
-
     isChannelExists(channelId: string) {
         // if "channelId" not found
         if (!(channelId in channels)) return false;
 
         return true;
     }
-
     isQueueExists(channelId: string, queueName: string) {
         // if queue is not found on the channel
         if (!(queueName in channels[channelId])) return false;
 
         return true;
     }
-
     sendAck(req: Request, res: Response) {
         //#region check parameters
         const channelId: string | undefined = req.query.cId?.toString();
@@ -77,7 +74,6 @@ class AppController {
 
         this.setJsonResponse(true, 204, "ACK başarıyla işlendi.", res);
     }
-
     sendNack(req: Request, res: Response) {
         //#region check parameters
         const channelId: string | undefined = req.query.cId?.toString();
@@ -122,7 +118,6 @@ class AppController {
 
         this.setJsonResponse(true, 204, "NACK başarıyla işlendi.", res);
     }
-
     createChannel(req: Request, res: Response) {
         const channelId: string = crypto.randomUUID();
 
@@ -137,7 +132,6 @@ class AppController {
 
         this.setJsonResponse(true, 200, channelId, res);
     }
-
     createQueueOnChannel(req: Request, res: Response) {
         const channelId: string | undefined = req.query.cId?.toString();
         const queueName: string | undefined = req.query.qName?.toString();
@@ -171,7 +165,6 @@ class AppController {
 
         this.setJsonResponse(true, 200, queueName, res);
     }
-
     addMessageToQueue(req: Request, res: Response) {
         const channelId: string | undefined = req.query.cId?.toString();
         const queueName: string | undefined = req.query.qName?.toString();
@@ -202,7 +195,6 @@ class AppController {
 
         this.setJsonResponse(true, 200, "Message is added.", res);
     }
-
     consumeTheQueue(req: Request, res: Response) {
         //#region check parameters
         const channelId: string | undefined = req.query.cId?.toString();
@@ -258,7 +250,6 @@ class AppController {
             },
             res);
     }
-
     getInfosOfAllChannels(req: Request, res: Response) {
         this.setJsonResponse(true, 200, channels, res);
     }

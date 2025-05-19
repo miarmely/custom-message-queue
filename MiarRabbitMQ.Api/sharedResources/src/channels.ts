@@ -4,7 +4,7 @@ interface ChannelDetails {
 }
 
 class Channels {
-    private static allChannels: ChannelDetails[]
+    private static allChannels: ChannelDetails[] = [];
 
     public static addChannelDetails(details: ChannelDetails) {
         this.allChannels.push(details);
